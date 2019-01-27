@@ -10,12 +10,14 @@ include "includes/conf-tvshows.php";
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/progress_style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/tvshows.js" async></script>
     <script type="text/javascript" src="js/encode.js" async></script>
     <script type="text/javascript" src="js/amaga.js" async></script>
+    <script type="text/javascript" src="js/upload_progress.js"></script>
 
 </head>
 <body>
@@ -62,9 +64,12 @@ include "includes/conf-tvshows.php";
         <div>
             <input type="submit" value="Enviar">
             <input type="reset" value="Reiniciar" onClick="amaga();">
-
         </div>
     </form>
+    <br>
+    <div class='progress' id="progress_div">
+        <div class='bar' id='bar1'></div>
+        <div class='percent' id='percent1'>0%</div>
 </div>
 </body>
 </html>
