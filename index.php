@@ -10,14 +10,12 @@ include "includes/conf-tvshows.php";
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/progress_style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/tvshows.js" async></script>
     <script type="text/javascript" src="js/encode.js" async></script>
     <script type="text/javascript" src="js/amaga.js" async></script>
-    <script type="text/javascript" src="js/upload_progress.js"></script>
 
 </head>
 <body>
@@ -28,9 +26,9 @@ include "includes/conf-tvshows.php";
     <h6>Formats permesos: mkv, mp4, avi.</h6>
     <br>
 
-    <form method="post" action="upload.php" id="uploader" name="uploader">
+    <form method="post" action="upload.php" id="uploader" name="uploader" enctype="multipart/form-data">
         <h5>Sèrie:</h5>
-        <select id="sho" name="sho" required>
+        <select id="show" name="show" required>
             <option value="none" selected="selected">---</option>
             <option value="Class">Class</option>
             <option value="DW">Doctor Who</option>
@@ -56,20 +54,19 @@ include "includes/conf-tvshows.php";
         <br>
         <br>
         <h5>Selecciona un fitxer:</h5>
-        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="file" name="fileToUpload" id="fileToUpload" required>
 
         <br>
         <br>
 
         <div>
-            <input type="submit" value="Enviar">
+            <input type="submit" name="submit" value="Enviar" >
             <input type="reset" value="Reiniciar" onClick="amaga();">
         </div>
+        <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+        <h3 id="status"></h3>
+        <p id="loaded_n_total"></p>
     </form>
-    <br>
-    <div class='progress' id="progress_div">
-        <div class='bar' id='bar1'></div>
-        <div class='percent' id='percent1'>0%</div>
 </div>
 </body>
 </html>

@@ -10,7 +10,7 @@ function checksize($size) {
 
 // Allowed types: mkv, mp4, avi.
 function checktype($type) {
-    if ($type != "mkv" && $type != "mkv" && $type != "avi") {
+    if ($type != "mkv" && $type != "mp4" && $type != "avi") {
         return false;
     }
     return true;

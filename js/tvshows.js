@@ -1,14 +1,14 @@
-var anterior = "#" + $("#sho option:selected").val();
+var anterior = "#" + $("#show option:selected").val();
 $(anterior).show();
 var actual = "";
 
-$("#sho").change(function() {
+$("#show").change(function() {
     $("#classMulti").val("---");
     $("#DWmulti").val("---");
     $("#OPmulti").val("---");
     $("#TSJAmulti").val("---");
     $("#TWmulti").val("---");
-    actual = "#" + $("#sho option:selected").val();
+    actual = "#" + $("#show option:selected").val();
 
     $(anterior).hide();
     $(actual).show();
