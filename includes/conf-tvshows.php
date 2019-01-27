@@ -1,20 +1,21 @@
 <?php
 
 function getTemporades($tvshow) {
+    $base = "https://multimedia.xarxacatala.cat";
     if ($tvshow === "Class") {
-        $url = "https://multimedia.xarxacatala.cat/Class";
+        $url = $base."/Class";
     }
     elseif ($tvshow === "DW") {
-        $url = "https://multimedia.xarxacatala.cat/DW";
+        $url = $base."/DW";
     }
     elseif ($tvshow === "OP") {
-        $url = "https://multimedia.xarxacatala.cat/one-piece/serie";
+        $url = $base."/one-piece/serie";
     }
     elseif ($tvshow === "TSJA") {
-        $url = "https://multimedia.xarxacatala.cat/TSJA";
+        $url = $base."/TSJA";
     }
     elseif ($tvshow === "TW") {
-        $url = "https://multimedia.xarxacatala.cat/Torchwood";
+        $url = $base."/Torchwood";
     }
 
     $html = file_get_contents($url);
