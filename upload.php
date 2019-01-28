@@ -13,6 +13,7 @@
 
 include "includes/functions.php";
 include "includes/logging.php";
+include "includes/encode.php";
 
 $user = $_SERVER['REMOTE_USER'];
 
@@ -83,7 +84,7 @@ else {
 $target_dir = $base.$reldir;
 
 // Comprovacions
-if (checkexistance($target_dir) === false || checksize($size) === false || checktype($type) === false) {
+if (!checkexistance($target_dir) || !checksize($size) || !checktype($type)) {
     logs($user, "tried to upload a file that didn't satisfy the conditions.\n");
     exit("No se satisfan les condicions per pujar el fitxer.");
 }
@@ -91,6 +92,7 @@ if (checkexistance($target_dir) === false || checksize($size) === false || check
 // Puja el fitxer
 if (move_uploaded_file($tmp_name, $target_dir)) {
     logs($user,"has successfully uploaded the file ".$target_dir.".\n");
+    if ($encodar) encode($subs);
     echo "<h4>El fitxer s'ha pujat correctament.</h4>";
     echo "<h4>Enllaç del fitxer: <a href=https://multimedia.xarxacatala.cat/".$reldir.">https://multimedia.xarxacatala.cat/".$reldir."</a></h4>";
     echo "<h4><a href='/'>Torna'm a l'inici.</a></h4>";
