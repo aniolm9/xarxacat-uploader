@@ -1,0 +1,14 @@
+#!/bin/bash
+
+FILE=$1
+
+function encode() {
+    name=${FILE::-4}
+    if [[ $(mediainfo $FILE | grep "Writing library" | sed -n 2p | cut -d ":" -f 2 | cut -d " " -f 2) != x264 ]]
+    then
+        /usr/bin/ffmpeg -i $FILE -vcodec libx264 -acodec libmp3lame -map 0:v:0 -map 0:a:0 "${name}.mp4" && /bin/rm $FILE
+    else
+        /usr/bin/ffmpeg -i $FILE -vcodec copy -acodec libmp3lame -map 0:v:0 -map 0:a:0 "${name}.mp4" && /bin/rm $FILE
+    fi
+}
+encode

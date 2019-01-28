@@ -92,7 +92,7 @@ if (!checkexistance($target_dir) || !checksize($size) || !checktype($type)) {
 // Puja el fitxer
 if (move_uploaded_file($tmp_name, $target_dir)) {
     logs($user,"has successfully uploaded the file ".$target_dir.".\n");
-    if ($encodar) encode($subs);
+    if ($encodar) encode($subs, $target_dir);
     echo "<h4>El fitxer s'ha pujat correctament.</h4>";
     echo "<h4>Enllaç del fitxer: <a href=https://multimedia.xarxacatala.cat/".$reldir.">https://multimedia.xarxacatala.cat/".$reldir."</a></h4>";
     echo "<h4><a href='/'>Torna'm a l'inici.</a></h4>";
