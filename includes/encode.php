@@ -1,10 +1,14 @@
 <?php
 
-function encode($subs, $file) {
+include "conf-queue.php";
+
+function encode($subs, $reldir, $base) {
     if ($subs) {
-        shell_exec("../scripts/subs_encode ".$file." &");
+        exec("bash scripts/subs_encode ".$base." ".$reldir." > /dev/null 2>&1 &");
+        add_queue($reldir);
     }
     else {
-        shell_exec("../scripts/encode ".$file." &");
+        exec("bash scripts/encode ".$base." ".$reldir." > /dev/null 2>&1 &");
+        add_queue($reldir);
     }
 }

@@ -62,6 +62,7 @@ include "includes/conf-tvshows.php";
         <div>
             <input type="submit" name="submit" value="Enviar" >
             <input type="reset" value="Reiniciar" onClick="amaga();">
+            <h5><a href='queue.php'>Veure la cua.</a></h5>
         </div>
     </form>
 </div>
