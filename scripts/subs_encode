@@ -7,6 +7,7 @@ QUEUE_FILE="queue.php"
 
 function subs_encode() {
     name=${FILE::-4}
-    /usr/bin/ffmpeg -nostats -nostdin -i $FILE -map 0:v:0 -map 0:a:0 -vf subtitles=$FILE "${name}.mp4" && /bin/rm $FILE && /bin/sed -i "\|$RELPATH|d" $QUEUE_FILE
+    FILE=$(echo $FILE | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
+    /usr/bin/ffmpeg -nostats -nostdin -i $BASE$RELPATH -map 0:v:0 -map 0:a:0 -vf subtitles=$FILE "${name}.mp4" && /bin/rm $FILE && /bin/sed -i "\|$RELPATH|d" $QUEUE_FILE
 }
 subs_encode
