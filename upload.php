@@ -12,8 +12,12 @@
 <?php
 
 include "includes/functions.php";
+include "includes/logging.php";
+
+$user = $_SERVER['REMOTE_USER'];
 
 if (!isset($_POST['submit'])) {
+    logs($user, "didn't upload any file.\n");
     exit("No s'ha pujat cap fitxer.");
 }
 
@@ -43,9 +47,13 @@ elseif ($show === "TW") {
     $temporada = str_replace(' ', '', htmlspecialchars($_POST["TWmulti"]));
 }
 else {
+    logs($user, "didn't select a valid TV show.\n");
     exit("La sèrie seleccionada no és correcta.");
 }
-if ($temporada === "---") exit("La temporada seleccionada no és correcta.");
+if ($temporada === "---") {
+    logs($user, "didn't select a valid season.\n");
+    exit("La temporada seleccionada no és correcta.");
+}
 
 // Encodar i subs
 if (isset($_POST["subs"])) {
@@ -75,15 +83,20 @@ else {
 $target_dir = $base.$reldir;
 
 // Comprovacions
-if (checkexistance($target_dir) === false || checksize($size) === false || checktype($type) === false) exit("No se satisfan les condicions per pujar el fitxer.");
+if (checkexistance($target_dir) === false || checksize($size) === false || checktype($type) === false) {
+    logs($user, "tried to upload a file that didn't satisfy the conditions.\n");
+    exit("No se satisfan les condicions per pujar el fitxer.");
+}
 
 // Puja el fitxer
 if (move_uploaded_file($tmp_name, $target_dir)) {
+    logs($user,"has successfully uploaded the file ".$target_dir.".\n");
     echo "<h4>El fitxer s'ha pujat correctament.</h4>";
     echo "<h4>Enllaç del fitxer: <a href=https://multimedia.xarxacatala.cat/".$reldir.">https://multimedia.xarxacatala.cat/".$reldir."</a></h4>";
     echo "<h4><a href='/'>Torna'm a l'inici.</a></h4>";
 }
 else {
+    logs($user, "tried to upload ".$target_dir." but it failed.\n");
     echo "<h4>Ha fallat alguna cosa. Si us plau, contacta amb l'administrador.</h4>";
 }
 ?>
