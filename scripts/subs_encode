@@ -7,7 +7,9 @@ QUEUE_FILE="queue.php"
 
 function subs_encode() {
     name=${FILE::-4}
+    # Something really weird happens.
     FILE=$(echo $FILE | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
-    /usr/bin/ffmpeg -nostats -nostdin -i $BASE$RELPATH -map 0:v:0 -map 0:a:0 -vf subtitles=$FILE "${name}.mp4" && /bin/rm $BASE$RELPATH && /bin/sed -i "\|$RELPATH|d" $QUEUE_FILE
+    SEDPATH=$(echo $RELPATH | sed 's/\[/\\[/g' | sed 's/\]/\\]/g')
+    /usr/bin/ffmpeg -nostats -nostdin -i $BASE$RELPATH -map 0:v:0 -map 0:a:0 -vf subtitles=$FILE "${name}.mp4" && /bin/rm $BASE$RELPATH && /bin/sed -i "\|$SEDPATH|d" $QUEUE_FILE
 }
 subs_encode
