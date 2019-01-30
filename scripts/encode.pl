@@ -27,8 +27,8 @@ sub encode {
         system(@rm);
         
         if ($? == 0) {
-            my @sed = ("sed", "-i", "\/$escaped_relpath/d", "$queue_file");
-            system(@sed);
+            my $perl = "perl -i -ne '/$escaped_relpath/ || print' $queue_file";
+            system($perl);
         }
     }
 }
