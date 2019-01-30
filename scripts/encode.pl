@@ -14,21 +14,21 @@ sub encode {
     
     # Commands
     if (qx{mediainfo $abspath | grep \"Writing library\" | sed -n 2p | cut -d \":\" -f 2 | cut -d \" \" -f 2} ne "x264\n") {
-        my @ffmpeg_args = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "libx264", "-acodec", "libmp3lame", "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
-        system(@ffmpeg_args);
+        my @ffmpeg = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "libx264", "-acodec", "libmp3lame", "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
+        system(@ffmpeg);
     }
     else {
-        my @ffmpeg_args = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "copy", "-acodec", "libmp3lame", "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
-        system(@ffmpeg_args);
+        my @ffmpeg = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "copy", "-acodec", "libmp3lame", "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
+        system(@ffmpeg);
     }
     
     if ($? == 0) {
-        my @rm_args = ("rm", "$abspath");
-        system(@rm_args);
+        my @rm = ("rm", "$abspath");
+        system(@rm);
         
         if ($? == 0) {
-            my @sed_args = ("sed", "-i", "\/$escaped_relpath/d", "$queue_file");
-            system(@sed_args);
+            my @sed = ("sed", "-i", "\/$escaped_relpath/d", "$queue_file");
+            system(@sed);
         }
     }
 }
