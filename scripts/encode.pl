@@ -23,9 +23,8 @@ sub encode {
     }
     
     if ($? == 0) {
-        my @rm = ("rm", "$abspath");
-        system(@rm);
-        
+        unlink "$abspath";
+
         if ($? == 0) {
             my $perl = "perl -i -ne '/$escaped_relpath/ || print' $queue_file";
             system($perl);
