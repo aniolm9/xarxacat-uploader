@@ -9,7 +9,7 @@ sub encode {
     my $base = "$_[0]";
     my $relpath = "$_[1]";
     my $abspath = "$base$relpath";
-    (my $abspath_noextension = $abspath) =~ s/\.[^.]+$//;
+    my $abspath_noextension = substr($abspath, 0, rindex($abspath, '.') - length($abspath));
     my $escaped_relpath = quotemeta($relpath);
     my $escaped_abspath = quotemeta($abspath);
     
