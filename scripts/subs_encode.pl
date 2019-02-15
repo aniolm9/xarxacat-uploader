@@ -24,6 +24,8 @@ sub encode {
     # Delete file from queue
     my $perl = "perl -i -ne '/$escaped_relpath/ || print' $queue_file";
     system($perl);
+
+    return 0;
 }
 
 encode($ARGV[0], $ARGV[1]);
