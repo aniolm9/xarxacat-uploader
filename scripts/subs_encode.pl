@@ -25,7 +25,7 @@ sub encode {
     my $perl = "perl -i -ne '/$escaped_relpath/ || print' $queue_file";
     system($perl);
 
-    return 0;
+    return;
 }
 
 encode($ARGV[0], $ARGV[1]);
