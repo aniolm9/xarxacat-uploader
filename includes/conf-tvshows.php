@@ -15,7 +15,7 @@ function getTemporades($tvshow) {
         $url = $base."/TSJA";
     }
     elseif ($tvshow === "TW") {
-        $url = $base."/Torchwood";
+        $url = $base."/TW";
     }
 
     $html = file_get_contents($url);

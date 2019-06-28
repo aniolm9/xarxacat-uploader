@@ -83,9 +83,6 @@ else {
 if ($show === "OP") {
     $reldir = "one-piece/serie/".$temporada."/".$filename;
 }
-elseif ($show === "TW") {
-    $reldir = "Torchwood/".$temporada."/".$filename;
-}
 else {
     $reldir = $show."/".$temporada."/".$filename;
 }
