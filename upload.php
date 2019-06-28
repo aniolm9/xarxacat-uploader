@@ -26,7 +26,7 @@ $base = "/var/www/multimedia/";
 
 // Inici variables del formulari
 $size = htmlspecialchars($_FILES["fileToUpload"]["size"]);
-$filename = str_replace(" ", "_", htmlspecialchars(basename($_FILES["fileToUpload"]["name"])));
+$episode = sprintf("%02s", $_POST["episode"]);
 $tmp_name = htmlspecialchars($_FILES["fileToUpload"]["tmp_name"]);
 $type = htmlspecialchars(strtolower(pathinfo($filename,PATHINFO_EXTENSION)));
 $show = htmlspecialchars($_POST["show"]);
@@ -55,6 +55,10 @@ if ($temporada === "---") {
     logs($user, "didn't select a valid season.\n");
     exit("La temporada seleccionada no és correcta.");
 }
+
+// Nom del fitxer
+$temporada_num = sprintf("%02s", filter_var($temporada, FILTER_SANITIZE_NUMBER_INT));
+$filename = $show."-".$temporada_num."x".$episode.".".$type;
 
 // Encodar i subs
 if (isset($_POST["subs"])) {

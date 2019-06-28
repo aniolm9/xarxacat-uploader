@@ -47,7 +47,7 @@ include "includes/conf-tvshows.php";
 
         <br>
         <h5>Número d'episodi:</h5>
-        <input type="text" name="episodi" required>
+        <input type="text" name="episode" required>
 
         <br>
         Cremar subtítols: <input type="checkbox" name="subs" value="subs">
