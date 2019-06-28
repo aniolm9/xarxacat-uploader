@@ -66,6 +66,9 @@ include "includes/conf-tvshows.php";
             <input type="text" name="year" required>
         </div>
 
+        <h5>Nom:</h5>
+        <input type="text" name="name">
+
         <br>
         Cremar subtítols: <input type="checkbox" name="subs" value="subs">
 
