@@ -10,3 +10,4 @@ Eina utilitzada per pujar fitxers multimedia i encodar-los.
 * x264
 * libmp3lame0
 * libmp3lame-dev
+* libipc-system-simple-perl
