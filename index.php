@@ -14,6 +14,7 @@ include "includes/conf-tvshows.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/tvshows.js" async></script>
+    <script type="text/javascript" src="js/type.js" async></script>
     <script type="text/javascript" src="js/encode.js" async></script>
     <script type="text/javascript" src="js/amaga.js" async></script>
 
@@ -45,9 +46,25 @@ include "includes/conf-tvshows.php";
         <?=getTWConfig();?>
         <!-- Fi config temporades-->
 
-        <br>
-        <h5>Número d'episodi:</h5>
-        <input type="text" name="episode" required>
+        <h5>Tipus:</h5>
+        <select id="tipus" name="tipus" required>
+            <option value="none" selected="selected">---</option>
+            <option value="capitol">Capítol</option>
+            <option value="peli">Pel·lícula</option>
+            <option value="minisodi">Minisodi</option>
+            <option value="prequel">Preqüela</option>
+            <option value="extra">Extra</option>
+        </select>
+
+        <div id="numero">
+            <h5>Número:</h5>
+            <input type="text" name="num" required>
+        </div>
+
+        <div id="any">
+            <h5>Any:</h5>
+            <input type="text" name="year" required>
+        </div>
 
         <br>
         Cremar subtítols: <input type="checkbox" name="subs" value="subs">

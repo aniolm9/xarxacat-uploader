@@ -5,5 +5,7 @@ function amaga() {
     $("#TSJA").hide();
     $("#TW").hide();
     $("input[type='checkbox'][value='encodar']").prop('disabled', false);
+    $("#numero").hide();
+    $("#any").hide();
 }
 amaga();
