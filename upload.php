@@ -59,7 +59,6 @@ if ($temporada === "---") {
 // Nom del fitxer
 $temporada_num = sprintf("%02s", filter_var($temporada, FILTER_SANITIZE_NUMBER_INT));
 $filename = $show."-".$temporada_num."x".$episode.".".$type;
-logs($user, "Filename: ".$filename);
 
 // Encodar i subs
 if (isset($_POST["subs"])) {
