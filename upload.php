@@ -28,7 +28,7 @@ $base = "/var/www/multimedia/";
 $size = htmlspecialchars($_FILES["fileToUpload"]["size"]);
 $episode = sprintf("%02s", $_POST["episode"]);
 $tmp_name = htmlspecialchars($_FILES["fileToUpload"]["tmp_name"]);
-$type = htmlspecialchars(strtolower(pathinfo($filename,PATHINFO_EXTENSION)));
+$type = htmlspecialchars(strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION)));
 $show = htmlspecialchars($_POST["show"]);
 
 // Temporada
@@ -59,6 +59,7 @@ if ($temporada === "---") {
 // Nom del fitxer
 $temporada_num = sprintf("%02s", filter_var($temporada, FILTER_SANITIZE_NUMBER_INT));
 $filename = $show."-".$temporada_num."x".$episode.".".$type;
+logs($user, "Filename: ".$filename);
 
 // Encodar i subs
 if (isset($_POST["subs"])) {
