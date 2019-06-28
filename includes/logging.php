@@ -8,3 +8,4 @@ function logs($user, $message) {
 
     file_put_contents($out_file, $out_message, FILE_APPEND | LOCK_EX);
 }
+?>

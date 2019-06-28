@@ -12,7 +12,7 @@
 <?php
 
 include "includes/functions.php";
-include "includes/logging.php";
+include_once "includes/logging.php";
 include "includes/encode.php";
 
 $user = $_SERVER['REMOTE_USER'];

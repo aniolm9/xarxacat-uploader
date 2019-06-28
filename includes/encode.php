@@ -1,7 +1,7 @@
 <?php
 
 include "conf-queue.php";
-include "logging.php";
+include_once "logging.php";
 
 function encode($subs, $reldir, $base) {
     if ($subs) {
@@ -15,3 +15,4 @@ function encode($subs, $reldir, $base) {
         add_queue($reldir);
     }
 }
+?>
