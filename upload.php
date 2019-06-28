@@ -81,10 +81,10 @@ else {
 
 // Directori on es copiarà el fitxer pujat.
 if ($show === "OP") {
-    $reldir = "one-piece/serie/".$temporada.$filename;
+    $reldir = "one-piece/serie/".$temporada."/".$filename;
 }
 elseif ($show === "TW") {
-    $reldir = "Torchwood/".$temporada.$filename;
+    $reldir = "Torchwood/".$temporada."/".$filename;
 }
 else {
     $reldir = $show."/".$temporada."/".$filename;
