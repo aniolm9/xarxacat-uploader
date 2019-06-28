@@ -46,6 +46,10 @@ include "includes/conf-tvshows.php";
         <!-- Fi config temporades-->
 
         <br>
+        <h5>Número d'episodi:</h5>
+        <input type="text" name="episodi" required>
+
+        <br>
         Cremar subtítols: <input type="checkbox" name="subs" value="subs">
 
         <br>
