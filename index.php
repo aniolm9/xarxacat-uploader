@@ -57,11 +57,12 @@ include "includes/conn.php";
         <h5>Tipus:</h5>
         <select id="tipus" name="tipus" required>
             <option value="none" selected="selected">---</option>
-            <option value="capitol">Capítol</option>
-            <option value="peli">Pel·lícula</option>
-            <option value="minisodi">Minisodi</option>
-            <option value="prequel">Preqüela</option>
-            <option value="extra">Extra</option>
+            <option value="episodes">Capítol</option>
+            <option value="films">Pel·lícula</option>
+            <option value="minisodes">Minisodi</option>
+            <option value="prequels">Preqüela</option>
+            <option value="sequels">Seqüela</option>
+            <option value="extras">Extra</option>
         </select>
 
         <div id="numero">
