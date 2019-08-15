@@ -3,7 +3,7 @@ $(anterior).show();
 var actual = "";
 
 $("#show").change(function() {
-    $("#classMulti").val("---");
+    $("#ClassMulti").val("---");
     $("#DWmulti").val("---");
     $("#OPmulti").val("---");
     $("#TSJAmulti").val("---");

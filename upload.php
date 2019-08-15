@@ -30,7 +30,7 @@ $show = htmlspecialchars($_POST["show"]);
 
 // Temporada
 if ($show === "Class") {
-    $temporada = str_replace(' ', '', htmlspecialchars($_POST["classMulti"]));
+    $temporada = str_replace(' ', '', htmlspecialchars($_POST["ClassMulti"]));
 }
 elseif ($show === "DW") {
     $temporada = str_replace(' ', '', htmlspecialchars($_POST["DWmulti"]));

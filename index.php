@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include "includes/conf-tvshows.php";
+include "includes/conn.php";
 ?>
 <html>
 <head>
@@ -39,11 +40,14 @@ include "includes/conf-tvshows.php";
         </select>
 
         <!-- Config temporades -->
-        <?=getClassConfig();?>
-        <?=getDWConfig();?>
-        <?=getOPConfig();?>
-        <?=getTSJAConfig();?>
-        <?=getTWConfig();?>
+        <?php
+        $shows = mysqli_fetch_array(mysqli_query($conn, "SELECT name FROM shows"), MYSQLI_ASSOC);
+        foreach ($shows as $show) {
+            $sql = mysqli_query($conn, 'SELECT seasons.name FROM seasons INNER JOIN shows ON shows.name = "'.$show.'" AND seasons.show_id = shows.id');
+            echo getTemporades($sql, $show);
+        }
+        mysqli_close($conn);
+        ?>
         <!-- Fi config temporades-->
 
         <h5>Tipus:</h5>
