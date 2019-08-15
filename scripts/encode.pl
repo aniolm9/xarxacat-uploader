@@ -15,11 +15,13 @@ sub encode {
     
     # Encode file
     if (qx{mediainfo $abspath | grep \"Writing library\" | sed -n 2p | cut -d \":\" -f 2 | cut -d \" \" -f 2} ne "x264\n") {
-        my @ffmpeg = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "libx264", "-acodec", "libmp3lame", "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
+        my @ffmpeg = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "libx264", "-acodec", "libmp3lame",
+                        "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
         system(@ffmpeg);
     }
     else {
-        my @ffmpeg = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "copy", "-acodec", "libmp3lame", "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
+        my @ffmpeg = ("ffmpeg", "-nostats", "-nostdin", "-i", "$abspath", "-vcodec", "copy", "-acodec", "libmp3lame",
+                        "-map", "0:v:0", "-map", "0:a:0", "$abspath_noextension.mp4");
         system(@ffmpeg);
     }
 
@@ -27,8 +29,10 @@ sub encode {
     unlink "$abspath";
 
     # Delete file from queue
-    my $perl = "perl -i -ne '/$escaped_relpath/ || print' $queue_file";
-    system($perl);
+    local ($^I, @ARGV) = ("", $queue_file);
+    while(<>) {
+        print unless /$escaped_relpath/;
+    }
 
     return;
 }

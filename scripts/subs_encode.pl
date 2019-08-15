@@ -22,8 +22,10 @@ sub encode {
     unlink "$abspath";
 
     # Delete file from queue
-    my $perl = "perl -i -ne '/$escaped_relpath/ || print' $queue_file";
-    system($perl);
+    local ($^I, @ARGV) = ("", $queue_file);
+    while(<>) {
+        print unless /$escaped_relpath/;
+    }
 
     return;
 }
