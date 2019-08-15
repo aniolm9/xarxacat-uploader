@@ -27,6 +27,10 @@ $size = htmlspecialchars($_FILES["fileToUpload"]["size"]);
 $tmp_name = htmlspecialchars($_FILES["fileToUpload"]["tmp_name"]);
 $type = htmlspecialchars(strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION)));
 $show = htmlspecialchars($_POST["show"]);
+$content = htmlspecialchars($_POST["tipus"]);
+$number = htmlspecialchars($_POST["num"]);
+$name = htmlspecialchars($_POST["name"]);
+$year = htmlspecialchars($_POST["year"]);
 
 // Temporada
 if ($show === "Class") {
@@ -55,27 +59,24 @@ if ($temporada === "---") {
 
 // Nom del fitxer
 if ($show === "OP") {
-    $episode = sprintf("%03s", $_POST["episode"]);
+    $episode = sprintf("%03s", $number);
     $filename = "op_cat-".$episode.".".$type;
 }
 else {
-    $episode = sprintf("%02s", $_POST["episode"]);
+    $episode = sprintf("%02s", $number);
     $temporada_num = sprintf("%02s", filter_var($temporada, FILTER_SANITIZE_NUMBER_INT));
     $filename = $show."-".$temporada_num."x".$episode.".".$type;
 }
 
 // Encodar i subs
+$subs = "no-subs";
+$encodar = false;
 if (isset($_POST["subs"])) {
-    $subs = true;
+    $subs = "with-subs";
     $encodar = true;
 }
 elseif (isset($_POST["encodar"])) {
-    $subs = false;
     $encodar = true;
-}
-else {
-    $subs = false;
-    $encodar = false;
 }
 // Final variables formulari
 
