@@ -41,7 +41,11 @@ include "includes/conn.php";
 
         <!-- Config temporades -->
         <?php
-        $shows = mysqli_fetch_array(mysqli_query($conn, "SELECT name FROM shows"), MYSQLI_ASSOC);
+        $sql = mysqli_query($conn, "SELECT name FROM shows");
+        $shows = array();
+        while ($row = $sql->fetch_assoc()) {
+            $shows[] = $row['name'];
+        }
         foreach ($shows as $show) {
             $sql = mysqli_query($conn, 'SELECT seasons.name FROM seasons INNER JOIN shows ON shows.name = "'.$show.'" AND seasons.show_id = shows.id');
             echo getTemporades($sql, $show);
@@ -62,12 +66,12 @@ include "includes/conn.php";
 
         <div id="numero">
             <h5>Número:</h5>
-            <input type="text" name="num" required>
+            <input type="text" name="num">
         </div>
 
         <div id="any">
             <h5>Any:</h5>
-            <input type="text" name="year" required>
+            <input type="text" name="year">
         </div>
 
         <h5>Nom:</h5>
