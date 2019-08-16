@@ -3,7 +3,7 @@ var tipus_actual = "";
 
 $("#tipus").change(function() {
     var selected = $("#tipus option:selected").val();
-    if (selected == "capitol" || selected == "minisodi" || selected == "prequel") {
+    if (selected == "capitol" || selected == "minisodi" || selected == "prequel" || selected == "sequel") {
         tipus_actual = "#numero";
     }
     else if (selected == "peli") {
