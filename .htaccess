@@ -9,3 +9,4 @@
 	Deny from all
 	Allow from 127.0.0.1
 </Files>
+RedirectMatch 404 /\.git
