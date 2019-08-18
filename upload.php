@@ -43,7 +43,7 @@ elseif ($show === "DW") {
     $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["DWmulti"]));
 }
 elseif ($show === "OP") {
-    $temporada = "serie/".str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["OPmulti"]));
+    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["OPmulti"]));
 }
 elseif ($show === "TSJA") {
     $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["TSJAmulti"]));
@@ -72,17 +72,18 @@ elseif (isset($_POST["encodar"])) {
 }
 // Final variables formulari
 
-// Directori on es copiarà el fitxer pujat.
+// Preparar variables per moure i inserir.
+$show_id = mysqli_fetch_row(mysqli_query($conn,'SELECT id FROM shows WHERE name="'.$show.'"'))[0];
+$season_id = mysqli_fetch_row(mysqli_query($conn,'SELECT id FROM seasons WHERE name="'.$temporada.'" AND show_id='.$show_id))[0];
+
 if ($show === "OP") {
     $reldir = "one-piece/";
+    $temporada = "serie/".$temporada;
 }
 else {
     $reldir = $show."/";
 }
 
-// Preparar variables per moure i inserir.
-$show_id = mysqli_fetch_row(mysqli_query($conn,'SELECT id FROM shows WHERE name="'.$show.'"'))[0];
-$season_id = mysqli_fetch_row(mysqli_query($conn,'SELECT id FROM seasons WHERE name="'.$temporada.'" AND show_id='.$show_id))[0];
 if ($content == "capitol") {
     $reldir .= $temporada."/".$filename;
     $url = $base_url.$reldir;
