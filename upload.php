@@ -40,16 +40,16 @@ if ($show === "Class") {
     $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["ClassMulti"]));
 }
 elseif ($show === "DW") {
-    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["DWmulti"]));
+    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["DWMulti"]));
 }
 elseif ($show === "OP") {
-    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["OPmulti"]));
+    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["OPMulti"]));
 }
 elseif ($show === "TSJA") {
-    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["TSJAmulti"]));
+    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["TSJAMulti"]));
 }
 elseif ($show === "TW") {
-    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["TWmulti"]));
+    $temporada = str_replace(' ', '', mysqli_real_escape_string($conn, $_POST["TWMulti"]));
 }
 else {
     logs("didn't select a valid TV show.\n");

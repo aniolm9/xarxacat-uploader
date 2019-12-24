@@ -4,10 +4,10 @@ var actual = "";
 
 $("#show").change(function() {
     $("#ClassMulti").val("---");
-    $("#DWmulti").val("---");
-    $("#OPmulti").val("---");
-    $("#TSJAmulti").val("---");
-    $("#TWmulti").val("---");
+    $("#DWMulti").val("---");
+    $("#OPMulti").val("---");
+    $("#TSJAMulti").val("---");
+    $("#TWMulti").val("---");
     actual = "#" + $("#show option:selected").val();
 
     $(anterior).hide();
