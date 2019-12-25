@@ -28,7 +28,7 @@ $base_url = "https://multimedia.xarxacatala.cat/";
 $size = mysqli_real_escape_string($conn, $_FILES["fileToUpload"]["size"]);
 $tmp_name = mysqli_real_escape_string($conn, $_FILES["fileToUpload"]["tmp_name"]);
 $type = mysqli_real_escape_string($conn, strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION)));
-$filename = mysqli_real_escape_string($conn, preg_replace('/[^A-Za-z0-9\-]/', '', pathinfo($_FILES["fileToUpload"]["name"],PATHINFO_FILENAME)).".".$type);
+$filename = mysqli_real_escape_string($conn, preg_replace('/[^A-Za-z0-9\-]/', '', pathinfo($_FILES["fileToUpload"]["name"],PATHINFO_FILENAME)));
 $show = mysqli_real_escape_string($conn, $_POST["show"]);
 $content = mysqli_real_escape_string($conn, $_POST["tipus"]);
 $number = mysqli_real_escape_string($conn, $_POST["num"]);
@@ -66,9 +66,14 @@ $encodar = false;
 if (isset($_POST["subs"])) {
     $subs = "with-subs";
     $encodar = true;
+    $filename = $filename.".mp4";
 }
 elseif (isset($_POST["encodar"])) {
     $encodar = true;
+    $filename = $filename.".mp4";
+}
+else {
+    $filename = $filename.".".$type;
 }
 // Final variables formulari
 
